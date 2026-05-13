@@ -29,6 +29,7 @@ const game = (function () {
     [1, 4, 7],
     [2, 5, 8],
   ];
+  let currentPlayer = "X";
   return {
     winning() {
       for (let i = 0; i < winningCombs.length; i++) {
@@ -52,5 +53,16 @@ const game = (function () {
         console.log(`Game is tie!`);
       }
     },
+    onTurn(n) {
+      gameboard.gameArr[n] = currentPlayer;
+      if (this.winning()) {
+        return true;
+      } else if (this.isTie()) {
+        return true;
+      } else {
+        currentPlayer === "X" ? (currentPlayer = "O") : (currentPlayer = "X");
+      }
+    },
   };
 })();
+c;
